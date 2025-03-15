@@ -1,8 +1,10 @@
 "use client"
 import React, { useState } from 'react'
 import { ArrowRight, Rocket, X } from 'lucide-react';
+import {useRouter} from "next/navigation";
 
 const Cta = () => {
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
@@ -109,11 +111,7 @@ const Cta = () => {
                 <div className="fixed bottom-6 right-6 z-50">
                     <div className="relative">
                         <button
-                            onClick={() => {
-                                // Scroll to CTA section or open modal
-                                const ctaSection = document.querySelector('section');
-                                if (ctaSection) ctaSection.scrollIntoView({ behavior: 'smooth' });
-                            }}
+                            onClick={() => router.push('/register')}  // Changed to direct navigation
                             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg p-4 flex items-center gap-2 group hover:shadow-xl transition-all duration-200"
                         >
                             <span className="hidden sm:inline">Get Early Access</span>
